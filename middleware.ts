@@ -12,7 +12,7 @@ export function middleware(req: NextRequest) {
     const authValue = basicAuth.split(" ")[1];
     const [user, pwd] = atob(authValue).split(":");
 
-    if (user === "tms" && pwd === "wakamatsu") {
+    if (user === process.env.user && pwd === process.env.pwd) {
       return NextResponse.next();
     }
   }
